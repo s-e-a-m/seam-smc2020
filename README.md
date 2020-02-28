@@ -13,4 +13,10 @@ Paper outline:
  - GERZON LCR
  - GERZON AMBISONIC
 
+ References:
+  - Blumlein, Stereo Patent
+  - Gerzon, Surround Stereo
+  - Gerzon, Ambisonic
+  - Blauert
+
 ### Poster
