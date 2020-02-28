@@ -1,20 +1,16 @@
-# Sustained Electroacosutic Music
+# SEAM - SUSTAINED STEREOPHONY
 
-## Linux Audio Conference 2020
+## Sound and Music Computing 2020
 
 ### Paper
 
 Paper outline:
- - Manifesto
- - Analisi del problema
- - Metodologia (esecuzione in luogo di tecnologia)
- - Repertorio analizzato
- - Scrittura (im sitting)
- - Riscrittura (nono)
- - Porting (fly)
+ - Analisi dei problemi attuali.
+ - Stereofonia, etimologie, significati. Storia.
+ - STEREO LR
+ - STEREO MID SIDE
+ - GERZON LR
+ - GERZON LCR
+ - GERZON AMBISONIC
 
 ### Poster
-
- - Manifesto
- - Case study (3 o 4 colonne descrizioni dei progetti)
- - Progetti futuri
