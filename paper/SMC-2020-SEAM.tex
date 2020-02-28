@@ -12,22 +12,22 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%% Some useful packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% See related documentation %%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage{amsmath} % popular packages from Am. Math. Soc. Please use the
+%\usepackage{amsmath} % popular packages from Am. Math. Soc. Please use the 
 %\usepackage{amssymb} % related math environments (split, subequation, cases,
 %\usepackage{amsfonts}% multline, etc.)
 %\usepackage{bm}      % Bold Math package, defines the command \bf{}
 %\usepackage{paralist}% extended list environments
-%%subfig.sty is the modern replacement for subfigure.sty. However, subfig.sty
-%%requires and automatically loads caption.sty which overrides class handling
-%%of captions. To prevent this problem, preload caption.sty with caption=false
+%%subfig.sty is the modern replacement for subfigure.sty. However, subfig.sty 
+%%requires and automatically loads caption.sty which overrides class handling 
+%%of captions. To prevent this problem, preload caption.sty with caption=false 
 %\usepackage[caption=false]{caption}
 %\usepackage[font=footnotesize]{subfig}
 
 
 %user defined variables
-\def\papertitle{PAPER TEMPLATE FOR SMC 2020}
-\def\firstauthor{First author}
-\def\secondauthor{Second author}
+\def\papertitle{SEAM PROJECT - SUSTAINED STEREO}
+\def\firstauthor{Giuseppe Silvi}
+\def\secondauthor{Davide Tedesco}
 \def\thirdauthor{Third author}
 
 % adds the automatic
@@ -49,13 +49,13 @@
     pdftitle={\papertitle},
     pdfauthor={\firstauthor, \secondauthor, \thirdauthor},
     bookmarksnumbered, % use section numbers with bookmarks
-    pdfstartview=XYZ % start with zoom=100% instead of full screen;
+    pdfstartview=XYZ % start with zoom=100% instead of full screen; 
                      % especially useful if working with a big screen :-)
    ]{hyperref}
   %\pdfcompresslevel=9
 
   \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are and their extensions so
+  % declare the path(s) where your graphic files are and their extensions so 
   %you won't have to specify these with every instance of \includegraphics
   \graphicspath{{./figures/}}
   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
@@ -69,7 +69,7 @@
   ]{hyperref}  % hyperrefs are active in the pdf file after conversion
 
   \usepackage[dvips]{epsfig,graphicx}
-  % declare the path(s) where your graphic files are and their extensions so
+  % declare the path(s) where your graphic files are and their extensions so 
   %you won't have to specify these with every instance of \includegraphics
   \graphicspath{{./figures/}}
   \DeclareGraphicsExtensions{.eps}
@@ -92,8 +92,8 @@
 \title{\papertitle}
 
 % Authors
-% Please note that submissions are NOT anonymous, therefore
-% authors' names have to be VISIBLE in your manuscript.
+% Please note that submissions are NOT anonymous, therefore 
+% authors' names have to be VISIBLE in your manuscript. 
 %
 % Single address
 % To use with only one author or several with the same address
@@ -104,21 +104,21 @@
 
 %Two addresses
 %--------------
-% \twoauthors
-%   {\firstauthor} {Affiliation1 \\ %
-%     {\tt \href{mailto:author1@smcnetwork.org}{author1@smcnetwork.org}}}
-%   {\secondauthor} {Affiliation2 \\ %
-%     {\tt \href{mailto:author2@smcnetwork.org}{author2@smcnetwork.org}}}
-
-% Three addresses
-% --------------
- \threeauthors
+ \twoauthors
    {\firstauthor} {Affiliation1 \\ %
      {\tt \href{mailto:author1@smcnetwork.org}{author1@smcnetwork.org}}}
    {\secondauthor} {Affiliation2 \\ %
      {\tt \href{mailto:author2@smcnetwork.org}{author2@smcnetwork.org}}}
-   {\thirdauthor} { Affiliation3 \\ %
-     {\tt \href{mailto:author3@smcnetwork.org}{author3@smcnetwork.org}}}
+
+% Three addresses
+% --------------
+% \threeauthors
+%   {\firstauthor} {Affiliation1 \\ %
+%     {\tt \href{mailto:author1@smcnetwork.org}{author1@smcnetwork.org}}}
+%   {\secondauthor} {Affiliation2 \\ %
+%     {\tt \href{mailto:author2@smcnetwork.org}{author2@smcnetwork.org}}}
+%   {\thirdauthor} { Affiliation3 \\ %
+%     {\tt \href{mailto:author3@smcnetwork.org}{author3@smcnetwork.org}}}
 
 
 % ***************************************** the document starts here ***************
@@ -134,9 +134,9 @@
 %
 
 \section{Introduction}\label{sec:introduction}
-This template includes all the information about formatting manuscripts for
+This template includes all the information about formatting manuscripts for 
 the SMC 2020 Conference.
-Please, use \LaTeX{} templates when
+Please, use \LaTeX{} templates when 
 preparing your submission.
 Please follow these guidelines to give the final proceedings a professional look.
 If you have any questions, you may contact the SMC 2020 organizers.
@@ -155,7 +155,7 @@ The maximum allowed length is {\bf8 pages} (for both lecture and poster presenta
 \label{subsec:body}
 Please use a 10~pt (point) Times font. Use sans-serif or non-proportional fonts only for special purposes, such as distinguishing source code.
 
-The first paragraph in each section should not be indented,
+The first paragraph in each section should not be indented, 
 but all other paragraphs should be.
 
 \subsection{Title and Authors}
@@ -214,33 +214,33 @@ and completely legible. All lines should be thick and dark enough for purposes o
 
 Numbers and captions of figures and tables always appear below the figure/table.
 Leave 1 line space between the figure or table and the caption.
-Figure and tables are numbered consecutively.
-Captions should be Times 10pt. Place tables/figures in the text as close to the reference as possible,
+Figure and tables are numbered consecutively. 
+Captions should be Times 10pt. Place tables/figures in the text as close to the reference as possible, 
 and preferably at the top of the page.
 
 Always refer to tables and figures in the main text, for example: ``see Fig. \ref{fig:example} and \tabref{tab:example}''.
 Figures and tables may extend across both columns to a maximum width of 17.2cm.
 
 Vectorial figures are preferred, e.g., eps. When using \texttt{Matlab}, export using either (encapsulated) Postscript or PDF format. In order to optimize readability, the font size of text within a figure should be no smaller than
-that of footnotes (8~pt font-size). If you use bitmap figures, make sure that the resolution is high enough for print quality.
+that of footnotes (8~pt font-size). If you use bitmap figures, make sure that the resolution is high enough for print quality. 
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.6\columnwidth]{figure}
-\caption{Figure captions should be placed below the figure,
+\caption{Figure captions should be placed below the figure, 
 exactly like this.\label{fig:example}}
 \end{figure}
 
 
 \subsection{Footnotes}
 You can indicate footnotes with a number in the text \footnote{This is a footnote example.},
-but try to work the content into the main text.Use 8~pt font-size for footnotes.  Place the footnotes at the bottom of the page
+but try to work the content into the main text.Use 8~pt font-size for footnotes.  Place the footnotes at the bottom of the page 
 on which they appear. Precede the footnote with a 0.5~pt horizontal rule.
 
 \section{Citations}
 All bibliographical references should be listed at the end, inside a section named ``REFERENCES''. References must be numbered in order of appearance. You should avoid listing references that do not appear in the text.
 
-Reference numbers in the text should appear within square brackets, such as in~\cite{Someone:00} or~\cite{Someone:00,Someone:04,Someone:09}. The reference format is the standard IEEE one. We highly recommend you use BibTeX
+Reference numbers in the text should appear within square brackets, such as in~\cite{Someone:00} or~\cite{Someone:00,Someone:04,Someone:09}. The reference format is the standard IEEE one. We highly recommend you use BibTeX 
 to generate the reference list.
 
 \section{Conclusions}
@@ -249,7 +249,7 @@ Please, submit full-length papers. Submission is fully electronic and automated 
 
 \begin{acknowledgments}
 At the end of the Conclusions, acknowledgements to people, projects, funding agencies, etc. can be included after the second-level heading  ``Acknowledgments'' (with no numbering).
-\end{acknowledgments}
+\end{acknowledgments} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %bibliography here
