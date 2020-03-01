@@ -209,6 +209,16 @@ Blumlein
 %--------------------------------------------
 %----------------larghezza massima del codice
 \begin{lstlisting}
+mspan(x,rad) = m, s
+  with{
+    m = (0.5 * x) + (0.5 * (x * cos(rad)));
+    s = x *(sin(-rad));
+};
+\end{lstlisting}
+
+%--------------------------------------------
+%----------------larghezza massima del codice
+\begin{lstlisting}
 import("stdfaust.lib");
 import("../faust-libraries/seam.lib");
 \end{lstlisting}
