@@ -201,7 +201,17 @@ reusability of a word in different contexts.
 \section{ROOTS}
 \label{sec:roots}
 
-Blumlein
+\begin{quotation}
+…it is fairly well established that the main factor having effect are phase differences and intensity differences between the sounds reaching the two ears, the influence with each of these has depending upon the frequency of the sounds emitted. For low frequency sound waves there is little or non difference in intensity at the two ears but there is a marked phase difference. For a give obliquity of sound the phase difference is approximately proportional to frequency, representing a fixed time delay between sound arriving at the two ears, by noting which there is a phase difference of pi radians or more between sound arriving at the two ears from a source located on the line joining them: but above such frequency if phase difference were the sole feature relied upon for directional location there would be ambiguity in the apparent position of the source. At the stage however the head begins to became effective as a baffle and causes noticeable intensity difference between the sounds reaching the two ears, and it is by noting such intensity difference that brain determines direction of sounds at higher frequencies.
+\end{quotation}
+
+\begin{quotation}
+…the frequency at which the brain changes over from phase- to intensity-discrimination occurs at about 700cps. …inn any case the transference is not sudden or discontinuous but there is considerable overlap of the two phenomena so that over a considerable frequency range differences of both phase and intensity will to some extent have an effect ion determine the sense of direction experienced. 
+\end{quotation}
+
+\begin{quotation}
+The invention also consists in a system of sound transmission wherein the sound is receive by two or more microphones, wherein at low frequencies difference in the phase of sound pressure at the microphone is reproduced as difference in volume at the loud speaker. 
+\end{quotation}
 
 \section{Mid-Side Panner}
 \label{sec:mspanner}
@@ -209,10 +219,10 @@ Blumlein
 %--------------------------------------------
 %----------------larghezza massima del codice
 \begin{lstlisting}
-mspan(x,rad) = m, s
+mspan(x,rad) = m,s
   with{
-    m = (0.5 * x) + (0.5 * (x * cos(rad)));
-    s = x *(sin(-rad));
+    m = (0.5*x)+(0.5*(x*cos(rad)));
+    s = x*(sin(-rad));
 };
 \end{lstlisting}
 
