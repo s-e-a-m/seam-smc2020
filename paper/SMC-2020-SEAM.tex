@@ -258,41 +258,88 @@ volume at the loud speaker.
 \section{Mid-Side Panner}
 \label{sec:mspanner}
 
-%During the lessons in Rome Conservatory in which \emph{SEAM} was born and its
-%related problems were shared with classes to sensitize students to community
-%work, the core software used to explode issues was \emph{Faust}\footnote{
-%\url{https://faust.grame.fr}}. This wasn't a restriction, it was a preference.
-%Text-based DSP offers the deepest learning experience and great expressivity
-%and readability. \emph{Faust} code could be written to educate a musician at
-%the same time with computation versatility and efficiency. The \emph{Faust
-%libraries} concept is useful to focus on write once, and read forever, code.
-%We think \emph{Faust} itself represents a rather concept of electroacoustic
-%sustainability. Thinking, for example, at the \emph{filters.lib} and at the
-%names that contributed the enrichment of speculation around each object, make
-%us wish to a musical interest capable to do community more than with the
-%adoption of other software.
-%
-%Instruments carved by musical ideas on readable text (code) becomes a
-%sub-literature in which each brick maintain the power of the source code, the
-%clarity of an equation, the efficiency of the continuous development, the
-%reusability of a word in different contexts.
+During the lessons in Rome Conservatory in which \emph{SEAM} was born and its
+related problems were shared with classes to sensitize students to community
+work, the core software used to explode issues was \emph{Faust}\footnote{
+\url{https://faust.grame.fr}}. This wasn't a restriction, it was a preference.
+Text-based DSP offers the deepest learning experience and great expressivity
+and readability. \emph{Faust} code could be written to educate a musician at
+the same time with computation versatility and efficiency. The \emph{Faust
+libraries} concept is useful to focus on write once, and read forever, code.
+We think \emph{Faust} itself represents a rather concept of electroacoustic
+sustainability. Thinking, for example, at the \emph{filters.lib} and at the
+names that contributed the enrichment of speculation around each object, make
+us wish to a musical interest capable to do community more than with the
+adoption of other software.
 
-%--------------------------------------------
-%----------------larghezza massima del codice
-\begin{lstlisting}
-mspan(x,rad) = m,s
-  with{
-    m = (0.5*x)+(0.5*(x*cos(rad)));
-    s = x*(sin(-rad));
-};
-\end{lstlisting}
+Instruments carved by musical ideas on readable text (code) becomes a
+sub-literature in which each brick maintain the power of the source code, the
+clarity of an equation, the efficiency of the continuous development, the
+reusability of a word in different contexts.
 
 %--------------------------------------------
 %----------------larghezza massima del codice
 \begin{lstlisting}
 import("stdfaust.lib");
-import("../faust-libraries/seam.lib");
+import("seam.lib");
 \end{lstlisting}
+
+The \emph{SEAM library} local importing points to other libraries catalogued
+by arguments, like in \emph{Standard Faust Libraries}\footnote{
+\url{https://github.com/grame-cncm/faustlibraries}}. 
+
+The first-order cardioid microphone could be described as balanced sum of non-directional pressure variations
+
+\begin{equation}
+ndp = 1
+\label{eq:omni}
+\end{equation}
+
+and bidirectional pressure gradient.
+
+\begin{equation}
+bpg = \cos\theta
+\label{eq:fig8}
+\end{equation}
+
+The typical patterns are produced with the following balancing between non-directional pressure and bidirectional pressure gradient.
+
+\begin{table}[h]
+ \begin{center}
+ \begin{tabular}{cc}
+  Polar Pattern & Equation \\
+  \hline
+  Omnidirectional & $ 1(x) $ \\
+  Subcardioid     & $ 0.75(x) + 0.25(\cos\theta x) $ \\
+  Cardioid        & $ 0.5(x) + 0.5(\cos\theta x) $ \\
+  Supercardioid   & $ 0.37(x) + 0.63(\cos\theta x) $ \\
+  Hypercardioid   & $ 0.25(x) + 0.75(\cos\theta x) $ \\
+  Bidirectional   & $ \cos\theta x $ \\
+ \end{tabular}
+\end{center}
+ \caption{\emph{non-directional pressure} coefficient and \emph{bidirectional pressure gradient} coefficient balancing to first order polar patterns description.}
+ \label{tab:example}
+\end{table}
+
+The Mid signal could be expressed by formula
+
+\begin{equation}
+m(x,p,\Theta) = (p*x) + ((1-p)*(\cos\Theta x)
+\label{eq:mid}
+\end{equation}
+
+The Faust code for a Mid-Side panner is truly self-explainable: the straight equations to describe both cardioid and figure-8 are the two components at the out of panning. 
+%--------------------------------------------
+%----------------larghezza massima del codice
+\begin{lstlisting}
+mspan(x,p,rad) = m,s
+  with{
+    m = (p*x)+((1-p)*(x*cos(rad)));
+    s = x*(sin(-rad));
+};
+\end{lstlisting}
+
+
 
 %\section{Floats and equations}
 %
@@ -344,6 +391,12 @@ import("../faust-libraries/seam.lib");
 \begin{figure}[t]
 \centering
 \includegraphics[width=1\columnwidth]{mspanlr}
+\caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1\columnwidth]{mspanlrfbpot}
 \caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
 \end{figure}
 
