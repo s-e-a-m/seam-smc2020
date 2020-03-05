@@ -244,6 +244,10 @@ We also prefer to underline that \emph{mono} is the nickname for \emph{monophoni
 
 With the word Stereophony, we should describe a condition by which a \emph{Phon\={e}}, voice, sound, arrival solid to the listener, whole, firm and stable in their multidimensional sound shape, even in its electroacoustic reproduction, with any necessary number of channels.
 
+\vfill\null
+
+\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION THREE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{ROOTS}
@@ -270,7 +274,9 @@ The binaural-ity of the human listening as the first statement of Blumlein conce
 
 approfondire… in realtà qui ci starebbe bene il discorso di Gerzon sulla percezione MS.
 
-\vspace{3cm}
+\vfill\null
+
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION FOUR
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -281,10 +287,21 @@ With the deep knowledge of time meaning between us and Blumlein, we can expose l
 
 Replacing the human voice speaking with a loudspeaker speaking the just now recorded human voice we lose, as Blumlein described, the capacity of ears-brain deciphers the sound-environment relationship. It is not more a stereophonic listening.
 
+\vfill\null
+
+\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION FIVE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mid-Side}
 \label{sec:midside}
+
+\begin{lstlisting}
+nsum = 0.5*(_+_);
+ndif = 0.5*(_-_);
+sdmx = _,_ <: nsum, ndif;
+\label{ls:sdmx}
+\end{lstlisting}
 
 \begin{quotation}
 …it is fairly well established that the main factor having effect are phase
@@ -319,6 +336,10 @@ is receive by two or more microphones, wherein at low frequencies difference in
 the phase of sound pressure at the microphone is reproduced as difference in
 volume at the loud speaker.
 \end{quotation}
+
+\vfill\null
+
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SIX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -426,12 +447,19 @@ mspan(x,p,rad) = m,s
     m = (p*x)+((1-p)*(x*cos(rad)));
     s = x*(sin(-rad));
 };
+\label{ls:mspan}
 \end{lstlisting}
 
-\begin{figure}[t]
+\begin{lstlisting}
+mspan_lr(x,p,rad) = mspan(x,p,rad) : sdmx;
+\label{ls:mspanlr}
+\end{lstlisting}
+
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{mspan}
-\caption{Mid-Side panner, 360 degrees sweep from left to right.\label{fig:mspan}}
+\caption{Mid-Side panner, 360 degrees sweep from left to right. The Side (red) line shows the bipolarity of the signal related to angular information. The Mid (blue) line has only positive energy in relation to angular information. It is evident the zero meaning at both edges of -180 and 180 degrees, where cardioid and figure-8 are hear-less.}
+\label{fig:mspan}
 \end{figure}
 
 %\section{Floats and equations}
@@ -475,25 +503,54 @@ mspan(x,p,rad) = m,s
 %Vectorial figures are preferred, e.g., eps. When using \texttt{Matlab}, export using either (encapsulated) Postscript or PDF format. In order to optimize readability, the font size of text within a figure should be no smaller than
 %that of footnotes (8~pt font-size). If you use bitmap figures, make sure that the resolution is high enough for print quality.
 
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{mspanlr}
 \caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
 \end{figure}
 
+\vfill\null
+
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SEVEN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{MS-PAN. Live usage}
 \label{sec:mspanlive}
 
-\begin{figure}[t]
+One of the most useful considerations of choosing panning techniques is usability in multiple circumstances. There are people who think quadratic panner is better than linear only because of its most recent introduction. They do not analyse the manual usage of one in place of the other. They do not analyse the mixer market and the role of panning in mass-culture music. Without analysing these practical issues, it is not really understandable why the worst panning technique ever is the most hardware implemented.  
+
+We have explained the path to Mid-Side panning, starting from the roots. Now it is the moment to understand what possible usages are, what are the peculiarities of a Mid-Side panner instead of amplitude panners. 
+
+The matrixed signal has its complexity as a disadvantage. To understand a signal as the significance of matrix combination requires a bit of tricky work more than straight signals. 
+
+As musicians, even when plots and formulas are pretty clear, at the end of judgment, are the ears and the musical usability to determine the best, personal, choice. So, for us, for example, the phase modulation strength of the Mid-Side panner suggested, even before a practical test, better stability on live usages. It is pretty simple to demonstrate. A microphone is routed into a channel, with a mid-lateral pointed panner, and fed to the loudspeakers. With a quadratic panner, both left and right channels have the same phase. The feedback of signal inside the microphone has in-phase different energies. The feedback will increase quadratically. On the other hand, in the same feedback situation, with the same angular panning to the microphone signal, the Mid-Side panning will produce different phase and different energy for both loudspeakers. The differences, in air, will produce a more resistive feedback pattern. In other words, the Mid-Side panner act "naturally" as anti-Larsen.
+
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{mspanlrfbpot}
-\caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
+\caption{Mid-Side to Left-Right panner. The plot describes the feedback response with a pan movement through the entire panorama, from -180 to 180 degrees (yellow line, normalized to -1 and 1). The energy multiplies up to four times for the left channel in infinite feedback (blue line). The top of feedback encreasing is at 45 degrees position in direction of the channel in feedback.}
+\label{fig:mspanlrfb}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\columnwidth]{mspanlrfb_diagram}
+\caption{block diagram of the infinite feedback condition simulation.}
+\label{fig:mspan}
+\end{figure}
+
+To have an idea of live usability differences conditions, we plot the result of the same infinite loop for the Left Right quadratic panner. 
+
+\begin{lstlisting}
+lrpanq(x,p) = l,r
+  with{
+    l = sqrt(1-p)*x;
+    r = sqrt(p)*x;
+};
+\end{lstlisting}
+
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{lrpanfbpot1}
 \caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
@@ -504,6 +561,15 @@ mspan(x,p,rad) = m,s
 \includegraphics[width=1\columnwidth]{lrpanfbpot2}
 \caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
 \end{figure}
+
+\vfill\null
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SEVEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{CONCLUSIONS}
+\label{sec:conc}
 
 %\section{Citations}
 %All bibliographical references should be listed at the end, inside a section named ``REFERENCES''. References must be numbered in order of appearance. You should avoid listing references that do not appear in the text.
@@ -518,6 +584,10 @@ mspan(x,p,rad) = m,s
 %\begin{acknowledgments}
 %At the end of the Conclusions, acknowledgements to people, projects, funding agencies, etc. can be included after the second-level heading  ``Acknowledgments'' (with no numbering).
 %\end{acknowledgments}
+
+\vfill\null
+
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAPHY
 \bibliography{smc2020bib}
