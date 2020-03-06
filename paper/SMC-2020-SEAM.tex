@@ -447,6 +447,7 @@ s(x,\Theta) = x*(sin(\theta))
 \end{equation}
 
 The Faust code for a Mid-Side panner is truly self-explained: the straight equations to describe both cardioid and figure-8 are the two components at the out of panning.
+
 %--------------------------------------------
 %----------------larghezza massima del codice
 \begin{lstlisting}
@@ -455,12 +456,12 @@ mspan(x,p,rad) = m,s
     m = (p*x)+((1-p)*(x*cos(rad)));
     s = x*(sin(-rad));
 };
-\label{ls:mspan}
 \end{lstlisting}
 
+%--------------------------------------------
+%----------------larghezza massima del codice
 \begin{lstlisting}
 mspan_lr(x,p,rad) = mspan(x,p,rad) : sdmx;
-\label{ls:mspanlr}
 \end{lstlisting}
 
 \begin{figure}[h]
@@ -518,39 +519,26 @@ mspan_lr(x,p,rad) = mspan(x,p,rad) : sdmx;
 \label{fig:mspanlr}
 \end{figure}
 
-\vfill\null
-
-\newpage
+%\vfill\null
+%
+%\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SEVEN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{MS-PAN. Live usage}
 \label{sec:mspanlive}
 
-One of the most useful considerations of choosing panning techniques is usability in multiple circumstances. There are people who think quadratic panner is better than linear only because of its most recent introduction. They do not analyse the manual usage of one in place of the other. They do not analyse the mixer market and the role of panning in mass-culture music. Without analysing these practical issues, it is not really understandable why the worst panning technique ever is the most hardware implemented.  
+The Mid-Side panner her proposed is not only a technical object, useful or not, comparable or not, related to other pan-kind. The Mid-Side panner here proposed is an object of thinking. We use the Mid-Side technique, to reflect on stereophony because some circumstances highlighted in previous sections need to be approached, some improved, others killed. 
 
-We have explained the path to Mid-Side panning, starting from the roots. Now it is the moment to understand what possible usages are, what are the peculiarities of a Mid-Side panner instead of amplitude panners. 
+Thinking about panning must be strongly encouraged because it is a simple object too often used without questioning. People can think the quadratic panner is better than linear only by virtue its most recent introduction. But if we stop its “usage without questioning” and, as musicians, we take time to analyse the manual usage of one in place of the other we can feel a difference, practical before sonic. 
 
-The matrixed signal has its complexity as a disadvantage. To understand a signal as the significance of matrix combination requires a bit of tricky work more than straight signals. 
+By knowing them we can analyse the mixer market and the role of panning in mass-culture music. Without analysing these practical issues, it is not really understandable why the worst panning technique ever is the most hardware implemented.  
 
-As musicians, even when plots and formulas are pretty clear, at the end of judgment, are the ears and the musical usability to determine the best, personal, choice. So, for us, for example, the phase modulation strength of the Mid-Side panner suggested, even before a practical test, better stability on live usages. It is pretty simple to demonstrate. A microphone is routed into a channel, with a mid-lateral pointed panner, and fed to the loudspeakers. With a quadratic panner, both left and right channels have the same phase. The feedback of signal inside the microphone has in-phase different energies. The feedback will increase quadratically. On the other hand, in the same feedback situation, with the same angular panning to the microphone signal, the Mid-Side panning will produce different phase and different energy for both loudspeakers. The differences, in air, will produce a more resistive feedback pattern. In other words, the Mid-Side panner act "naturally" as anti-Larsen.
+The code to build a quadratic amplitude panner is pretty trivial.
+The most prolix Faust code will do it in five lines. Deleting the $sqrt$ from the following formulas it becomes the simplest traditional linear amplitude panner.  
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\columnwidth]{mspanlrfbpot}
-\caption{Mid-Side to Left-Right panner. The plot describes the feedback response with a pan movement through the entire panorama, from -180 to 180 degrees (yellow line, normalized to -1 and 1). The energy multiplies up to four times for the left channel in infinite feedback (blue line). The top of feedback encreasing is at 45 degrees position in direction of the channel in feedback.}
-\label{fig:mspanlrfb}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\columnwidth]{mspanlrfb_diagram}
-\caption{Block diagram of the infinite feedback condition simulation on left channel. The sweep through all degrees is normalised to 1 for plotting purpose.}
-\label{fig:mspan}
-\end{figure}
-
-To have an idea of live usability differences conditions, we plot the result of the same infinite loop for the Left Right quadratic panner. 
-
+%--------------------------------------------
+%----------------larghezza massima del codice
 \begin{lstlisting}
 lrpanq(x,p) = l,r
   with{
@@ -559,26 +547,85 @@ lrpanq(x,p) = l,r
 };
 \end{lstlisting}
 
+Where $p$ is the angular coefficient expressed by the potentiometer, in a range between $0$ the Left position, $0.5$ the Center position and $1$ the Right position.
+
+Smiling, it could be done by one line:
+
+%--------------------------------------------
+%----------------larghezza massima del codice
+\begin{lstlisting}
+lrpanq(p) = _ <: sqrt(1-p)*_, sqrt(p)*_;
+\end{lstlisting}
+
+We have explained the path to Mid-Side panning, starting from the roots. Now it is the moment to understand what possible usages are, what are the peculiarities of a Mid-Side panner instead of amplitude panners. 
+
+The matrixed signal has its complexity as a disadvantage. Stop. It requires knowledge and fantasy. To understand a signal as the significance of matrix combination requires a bit of tricky work more than straight-signal. 
+
+As musicians, even when plots and formulas appear pretty clear, in the end, at the moment of judgment, are the ears and the musical usability to determine the best, personal, choice.
+
+The fascinating realm of matrixed signals forces a little to work by thought. So, for us, for example, the phase modulation strength of the Mid-Side panner had suggested, even before a practical test, better stability on live usages. Why? It is pretty simple to demonstrate.
+
+
+
+A microphone is routed into a channel, with a mid-lateral pointed panner, suppose 23 degrees to left and fed to the loudspeakers. With the quadratic panner, both left and right channels have different amplitude values with the same phase values. The feedback of the loudspeakers' signals inside the microphone comes from in-phase different energies sources. Searching the feedback with fingers on the gain will produce signals that will increase at least quadratically [fig. \ref{fig:lrpanfb1}, \ref{fig:lrpanfb2}].
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=1\columnwidth]{lrpanfbpot1}
-\caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
+\includegraphics[width=1\columnwidth]{lrpanfb_init}
+\caption{Left-Right quadratic amplitude panner feedback response. One cycle of sweep from left to right shows as amplitude moves fast over 150 times the initial value on the channel in feedback and over 20 times on the “opposite” channel.}
+\label{fig:lrpanfb1}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{lrpanfbpot2}
-\caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
+\caption{Left-Right quadratic amplitude panner feedback response. The plot shows the moment in which the cycle of sweep pass from right through left and again reversing to right. It shows as amplitude moves fast over 300 times the initial value on the channel in feedback and over 30 times on the “opposite” channel.}
+\label{fig:lrpanfb2}
 \end{figure}
 
-\vfill\null
+On the other hand, in the same feedback situation, with the same angular panning provenience applied to the microphone signal, the Mid-Side panning will produce different phase and different energy for both loudspeakers. The differences, in air, will produce a more resistive feedback pattern. In other words, the Mid-Side panner act "naturally" as anti-Larsen.
 
-\newpage
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\columnwidth]{mspanlrfbpot}
+\caption{Mid-Side to Left-Right panner. The plot describes the feedback response with a pan movement through the entire panorama, from -180 to 180 degrees (yellow line, normalized to -1 and 1). The energy multiplies up to four times for the left channel in infinite feedback (blue line). The top of feedback encreasing is at 45 degrees position in direction of the channel in feedback.}
+\label{fig:mspanlrfb}
+\end{figure}
+
+To have an idea of live usability differences conditions, we plot the result of the same infinite loop for the Left Right quadratic panner. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\columnwidth]{mspanlrfb_diagram}
+\caption{Block diagram of the infinite feedback condition simulation on left channel. The sweep through all degrees is normalised to 1 for plotting purpose.}
+\label{fig:mspan}
+\end{figure}
+
+
+%\vfill\null
+%
+%\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SEVEN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{CONCLUSIONS}
 \label{sec:conc}
+
+This is the second article SEAM produces to spread the music sustainability concept \cite{bevi05} from live electronics music to the broader electroacoustic music composition and interpretation. The original issues about music score documentation in electronic music are the fundamental core of the concept. Nevertheless, the focus of this research, and the approach, point to a compositional and practical situation that afflicts not only the documentation of a score but the musical thinking and practice at all. 
+
+The research defines a critical education situation, the one pretend to overcome literature with a new fancy way of teaching, writing books, in our opinion ludic, educate like playing. There are a lot of texts, didactically introduced at each level of electronic music school, with this “doing, does not matter why" approach. You can pretty simply recognize them, they offer the electronic music teaching as collection of recipes, articulated like a foreign language book. Some authors praise themselves for the didactic unit-based structure of their books, inspired by foreign language learning texts. Is that music? Is it a foreign language? From these gruesome attitudes, the SEAM PROJECT wants to take long-distance. What distance? Distance in thinking about music, because sustainability is only superficially a technical issue. The documentation is a quality parameter of sustainability but it is the musical practicing and interpreting that will build musical thinking during the years.
+
+The first concept to be clarified in the conclusions is that sustainability must aim at maintaining a musical idea, the peculiarities of a concept is necessary like  the peculiarities of the piece of art. We point to sustain the speculation music produce, through the sustain of listening, in what we have defined the \emph{sustainability of the process}. 
+
+The paper also has a journey profile, conceived around the idea of speaking diagonally to different levels of electroacoustic learning.  The repertoire, the literature, needs people sharing their knowledge, to refine common conscience. A community can operate as a Research Group, with a "common appreciation of interdisciplinary problems" \cite{ml91}, to bring a time-frozen composition back to a warm and discussed work, out of a solipsistic production-in-a-box typical of the personal computing era, to focus on musical matters carved out on the personal knowledge, outside the personal point of view. 
+
+It is necessary to focus on the main difference between technical sustainability and musical sustainability. Technical sustainability concerns the work, it is linked to the technical world that the work defines. It is its carbon dating, the reproducible ecosystem, maybe, but it is not the work itself. Musical sustainability is a matter of thoughts, that makes use of those tools to go out towards the perceptible. Supporting the thoughts is supporting music, perception, and listening.
+
+\begin{quote}
+La musica non è solo composizione. Non è artigianato, non è un mestiere. La musica è pensiero \cite{nono85}\footnote{Music is not only about composing. It’s not artisanship, neither only a craft. Music is the thought.}.
+\end{quote}
+
+%\section{Acknowledgments}
 
 %\section{Citations}
 %All bibliographical references should be listed at the end, inside a section named ``REFERENCES''. References must be numbered in order of appearance. You should avoid listing references that do not appear in the text.
