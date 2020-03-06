@@ -244,6 +244,8 @@ We also prefer to underline that \emph{mono} is the nickname for \emph{monophoni
 
 With the word Stereophony, we should describe a condition by which a \emph{Phon\={e}}, voice, sound, arrival solid to the listener, whole, firm and stable in their multidimensional sound shape, even in its electroacoustic reproduction, with any necessary number of channels.
 
+The path of this journey in the middle-earth of stereophony wants to lead to an understanding of the complexity and unsolved issues around electroacoustic sound reproduction. It is not a text on a new approach to something, rather it is an old something to be re-assembled, to be re-read, a path to seam and bond of different ideas appeared in our history of music, to which we, musicians, must be referred when staging music. The journey will not complete itself. The path will not lead somewhere. The real sustaining of electroacoustic music will start only with the death of the ready-to-listen recipes approach. When listening and speculation on music and sound will come back fashionable. 
+
 \vfill\null
 
 \newpage
@@ -270,9 +272,11 @@ Is a single human voice speaking, a monophonic voice inside a small room, an acc
 
 The binaural-ity of the human listening as the first statement of Blumlein conception: “\emph{an observer in the room is listening with two ears}”.
 
-\vspace{3cm}
+Michael Gerzon, from the roots of Blumlein and friends, jump the line with a clear description 
 
-approfondire… in realtà qui ci starebbe bene il discorso di Gerzon sulla percezione MS.
+\begin{quotation}
+The ears and brain localize sounds according to many different mechanism. Among the most important cues used are low frequency interaural phase (applicable up to around 2\emph{KHz}, but dominant below 700\emph{Hz}) and localization by amplitude differences between the two ears, predominantly above about 1\emph{KHz}. While other cues are also important, we have found that satisfying both these cues, and making them mutually consistent for central listener facing inn any direction, leads to particularly robust and reliable localization quality.\cite{mg92pdmsss}
+\end{quotation}
 
 \vfill\null
 
@@ -286,6 +290,10 @@ approfondire… in realtà qui ci starebbe bene il discorso di Gerzon sulla per
 With the deep knowledge of time meaning between us and Blumlein, we can expose loudspeaker significance better than him. For the Blumlein era, the loudspeaker was the future instrument for a better present time. The reproduced sound, at its young age, was pure magic. Today we know well how unsatisfied we are of loudspeaker reproduction. When the first iPhone was the only one smart-thing on the planet, it was awesome an awesome object of crafting. Today with the same object we would not take even a picture. Listening to a violin solo reproduced by the best loudspeaker on the market is not the same experience of the real performance. It is not related to stereophony and technique ability, it is integral to the reproduction limit of the technology we are able to craft.
 
 Replacing the human voice speaking with a loudspeaker speaking the just now recorded human voice we lose, as Blumlein described, the capacity of ears-brain deciphers the sound-environment relationship. It is not more a stereophonic listening.
+
+\begin{quotation}
+we show the loudspeaker layouts considered fo frontal stage stereo using from one (regarding mono as the trivial case of “one-loudspeaker stereo”!) to five loudspeakers… \cite{mg92pdmsss}
+\end{quotation}
 
 \vfill\null
 
@@ -398,7 +406,7 @@ The cardioid (\emph{cpg}) microphone we attempt to synthesize must point to the 
 
 \begin{equation}
 cpg = 0.5(x) + 0.5(\cos\theta x)
-\label{eq:fig8}
+\label{eq:cardioid}
 \end{equation}
 
 Cardioid and other first order most common patterns are produced with the following balancing between non-directional pressure and bidirectional pressure gradient.
@@ -431,10 +439,10 @@ m(x,p,\Theta) = (p*x) + ((1-p)*(\cos\Theta x)
 
 Where $x$ is the input signal, the $p$ is the balancing coefficient, $0.5$ for cardioid purpose, the $\theta$ is the angular impact direction expressed in radians.
 
-The Side component is figure-8 straight formula pointing on left.
+The Side component is the bipolar figure-8 straight formula pointing on left.
 
 \begin{equation}
-s(x,\Theta) = x*(sin(-\theta))
+s(x,\Theta) = x*(sin(\theta))
 \label{eq:mid}
 \end{equation}
 
@@ -506,7 +514,8 @@ mspan_lr(x,p,rad) = mspan(x,p,rad) : sdmx;
 \begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{mspanlr}
-\caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right.\label{fig:mspanlr}}
+\caption{Mid-Side panner to Left Right amplitude matrix. 360 degrees sweep from left to right. The top amplitude with cardioid polar pattern for the Mid channel is around 0.8. The 1 amplitude factor is reached when the Mid channel has an omnidirectional polar pattern.}
+\label{fig:mspanlr}
 \end{figure}
 
 \vfill\null
