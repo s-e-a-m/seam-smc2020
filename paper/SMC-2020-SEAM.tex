@@ -304,12 +304,23 @@ we show the loudspeaker layouts considered fo frontal stage stereo using from on
 \section{Mid-Side}
 \label{sec:midside}
 
-\begin{lstlisting}
-nsum = 0.5*(_+_);
-ndif = 0.5*(_-_);
-sdmx = _,_ <: nsum, ndif;
-\label{ls:sdmx}
-\end{lstlisting}
+\begin{quotation}
+In this electrical era one is not surprised to hear that orchestral music can be picked up in one city, transmitted a long distance, and reproduced in another. Indeed, most people think such things are commonplace. They are heard every night on the radio. However, anyone who appreciates good music would not admit that listening even to the best radio gives the emotional thrill experienced in the concert hall. \cite{hf34}
+\end{quotation}
+
+With these words, Harvey Fletcher introduces one of the milestones articles in the story of stereophonic sound, even perception. Physicist, his name you can find tattooed, on the left chest, of each true-stereo sound engineer. 
+
+Today we lost each sparkle of “that electrical era”, even the one that held the flame of interest in listening orchestral music through transmission, even the one that held the flame of interest in listening orchestral music, the one of interest in listening, the one of interest. One hundred years after that “era” we are monkeys in listening attitude. 
+
+In 1964, Paul W. Klipsch introduced the “Symposium on Auditory Perspective” reprinting:
+
+\begin{quotation}
+The following paper is a reprint of one of the most important papers in the field of audio. Fundamentals do not change. The laws of physics endure. In reprinting the Symposium, the fundamentals are restated. \cite{sap1964}
+\end{quotation}
+
+We must consider that failure. Failure of purpose. We must consider that a book, even the most inadequate, as an object of thinking, has a power. That power, as demonstrated in the introduction, could be to destroy. The Klipsch words point on a direction of encouragement for us: also he had sustained stereophony through literature significance. 
+
+The Fletcher \cite{hf34} text is dated 1934, one year after the approval of the Blumlein patent that describes the Mid-Side idea of sound transmission and recording. The business interests and the listening interests were weaved, in a \emph{stereo}, solid, form. 
 
 \begin{quotation}
 …it is fairly well established that the main factor having effect are phase
@@ -329,14 +340,14 @@ ears, and it is by noting such intensity difference that brain determines
 direction of sounds at higher frequencies.
 \end{quotation}
 
-\begin{quotation}
-…the frequency at which the brain changes over from phase- to
-intensity-discrimination occurs at about 700cps. …inn any case the transference
-is not sudden or discontinuous but there is considerable overlap of the two
-phenomena so that over a considerable frequency range differences of both phase
-and intensity will to some extent have an effect ion determine the sense of
-direction experienced.
-\end{quotation}
+%\begin{quotation}
+%…the frequency at which the brain changes over from phase- to
+%intensity-discrimination occurs at about 700cps. …inn any case the transference
+%is not sudden or discontinuous but there is considerable overlap of the two
+%phenomena so that over a considerable frequency range differences of both phase
+%and intensity will to some extent have an effect ion determine the sense of
+%direction experienced.
+%\end{quotation}
 
 \begin{quotation}
 The invention also consists in a system of sound transmission wherein the sound
@@ -345,9 +356,15 @@ the phase of sound pressure at the microphone is reproduced as difference in
 volume at the loud speaker.
 \end{quotation}
 
-\vfill\null
+\begin{lstlisting}
+nsum = 0.5*(_+_);
+ndif = 0.5*(_-_);
+sdmx = _,_ <: nsum, ndif;
+\end{lstlisting}
 
-\newpage
+%\vfill\null
+%
+%\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION SIX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
